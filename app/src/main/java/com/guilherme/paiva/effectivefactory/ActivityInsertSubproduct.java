@@ -1,6 +1,7 @@
 package com.guilherme.paiva.effectivefactory;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,12 +24,8 @@ public class ActivityInsertSubproduct extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.insert_subproduct);
 
-        EditText editTextSubproduct = (EditText) findViewById(R.id.editTextSubproduct);
-        Spinner spinnerChoiceProduct = (Spinner) findViewById(R.id.spinnerChoiceProduct);
+        final Spinner spinnerChoiceProduct = (Spinner) findViewById(R.id.spinnerChoiceProduct);
         Button buttonRegisterSubproduct = (Button) findViewById(R.id.buttonRegisterSubproduct);
-
-
-
 
         ArrayList<String> arrayListProducts = new ArrayList<String>();
         arrayListProducts = arrayListOfProductsFromDB();
@@ -41,6 +38,17 @@ public class ActivityInsertSubproduct extends Activity {
             @Override
             public void onClick(View v) {
 
+                SubproductDatabaseController crud = new SubproductDatabaseController(getBaseContext());
+
+                String spinnerChoiceProductString = spinnerChoiceProduct.getSelectedItem().toString();
+                EditText editTextSubproduct = (EditText) findViewById(R.id.editTextSubproduct);
+                String editTextSubproductString = editTextSubproduct.getText().toString();
+
+                String result = crud.insertSubproduct(spinnerChoiceProductString, editTextSubproductString);
+
+                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(v.getContext(), DashboardRegister.class);
+                startActivity(intent);
             }
         });
     }

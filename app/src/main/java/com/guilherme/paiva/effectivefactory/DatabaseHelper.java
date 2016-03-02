@@ -84,6 +84,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + AMOUNT_PRODUCT + " INTEGER, "
             + DATE_CREATED_OS + " DATE DEFAULT CURRENT_DATE" + ")";
 
+    //SUBPRODUCT
+    //column names for subproducts
+    public static final String TABLE_SUBPRODUCT = "subproduct";
+    public static final String ID_SUBPRODUCT = "_id";
+    public static final String PRODUCT_SUBPRODUCT = "product_subproduct_name";
+    public static final String SUBPRODUCT_NAME = "subproduct_name";
+
+    //subproduct table statement
+    private static final String CREATE_TABLE_SUBPRODUCT = "CREATE TABLE " + TABLE_SUBPRODUCT
+            + "( " + ID_SUBPRODUCT + " INTEGER PRIMARY KEY,"
+            + PRODUCT_SUBPRODUCT + " TEXT, "
+            + SUBPRODUCT_NAME + " TEXT" + ")";
+
 
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DATABASE_VERSION);
@@ -96,6 +109,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_OPERATIVE_POST);
         db.execSQL(CREATE_TABLE_PRODUCT);
         db.execSQL(CREATE_TABLE_OS);
+        db.execSQL(CREATE_TABLE_SUBPRODUCT);
     }
 
     @Override
@@ -105,6 +119,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_OPERATIVE_POST);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PRODUCT);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_OS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_SUBPRODUCT);
         onCreate(db);
     }
 }
