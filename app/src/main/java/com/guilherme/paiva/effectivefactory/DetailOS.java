@@ -1,5 +1,6 @@
 package com.guilherme.paiva.effectivefactory;
 
+
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -14,6 +15,8 @@ import android.nfc.tech.Ndef;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -27,9 +30,9 @@ import java.io.UnsupportedEncodingException;
  */
 public class DetailOS extends Activity {
 
-    public static final String ERROR_DETECTED = "Nenhuma tag NFC foi detectada!!";
-    public static final String WRITE_SUCCESS = "Texto escrito na tag NFC com sucesso!";
-    public static final String WRITE_ERROR = "Erro durante a escrita, a tag NFC está próxima o suficente?";
+    public static final String ERROR_DETECTED = "No NFC tag detected!";
+    public static final String WRITE_SUCCESS = "Text written to the NFC tag successfully!";
+    public static final String WRITE_ERROR = "Error during writing, is the NFC tag close enough to your device?";
     NfcAdapter nfcAdapter;
     PendingIntent pendingIntent;
     IntentFilter writeTagFilters[];
@@ -37,9 +40,9 @@ public class DetailOS extends Activity {
     Tag myTag;
     Context context;
 
-    TextView textViewNFCContent;
-    TextView textViewReceivedOSValues;
-    Button buttonRecordTag;
+    TextView tvNFCContent;
+    TextView message;
+    Button btnWrite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,19 +50,25 @@ public class DetailOS extends Activity {
         setContentView(R.layout.detail_os);
 
         String receivedOSValues = getIntent().getExtras().getString("itemOSValue");
-        textViewReceivedOSValues = (TextView) findViewById(R.id.textViewReceivedOSValues);
+        TextView textViewReceivedOSValues = (TextView) findViewById(R.id.textViewReceivedOSValues);
         textViewReceivedOSValues.setText(receivedOSValues);
 
-        buttonRecordTag = (Button) findViewById(R.id.buttonRecordTag);
 
-        buttonRecordTag.setOnClickListener(new View.OnClickListener() {
+        context = this;
+
+        tvNFCContent = (TextView) findViewById(R.id.nfc_contents);
+        message = (TextView) findViewById(R.id.edit_message);
+        btnWrite = (Button) findViewById(R.id.buttonRecordTag);
+
+        btnWrite.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v) {
                 try {
                     if(myTag ==null) {
                         Toast.makeText(context, ERROR_DETECTED, Toast.LENGTH_LONG).show();
                     } else {
-                        write(textViewReceivedOSValues.getText().toString(), myTag);
+                        write(message.getText().toString(), myTag);
                         Toast.makeText(context, WRITE_SUCCESS, Toast.LENGTH_LONG ).show();
                     }
                 } catch (IOException e) {
@@ -70,13 +79,12 @@ public class DetailOS extends Activity {
                     e.printStackTrace();
                 }
             }
-
         });
 
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         if (nfcAdapter == null) {
             // Stop here, we definitely need NFC
-            Toast.makeText(this, "Este smartphone não suporta NFC!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "This device doesn't support NFC.", Toast.LENGTH_LONG).show();
             finish();
         }
         readFromIntent(getIntent());
@@ -85,6 +93,28 @@ public class DetailOS extends Activity {
         IntentFilter tagDetected = new IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED);
         tagDetected.addCategory(Intent.CATEGORY_DEFAULT);
         writeTagFilters = new IntentFilter[] { tagDetected };
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     /******************************************************************************
@@ -123,7 +153,7 @@ public class DetailOS extends Activity {
             Log.e("UnsupportedEncoding", e.toString());
         }
 
-        textViewNFCContent.setText("Conteudo da NFC: " + text);
+        tvNFCContent.setText("NFC Content: " + text);
     }
 
 
@@ -173,20 +203,6 @@ public class DetailOS extends Activity {
         }
     }
 
-    @Override
-    public void onPause(){
-        super.onPause();
-        WriteModeOff();
-    }
-
-    @Override
-    public void onResume(){
-        super.onResume();
-        WriteModeOn();
-    }
-
-
-
     /******************************************************************************
      **********************************Enable Write********************************
      ******************************************************************************/
@@ -201,4 +217,17 @@ public class DetailOS extends Activity {
         writeMode = false;
         nfcAdapter.disableForegroundDispatch(this);
     }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        WriteModeOff();
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        WriteModeOn();
+    }
+
 }

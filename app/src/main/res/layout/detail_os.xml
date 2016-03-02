@@ -35,4 +35,24 @@
         android:id="@+id/textViewNFCContent"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/edit_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:hint="digite o que será gravado na tag"
+        android:layout_above="@+id/buttonRecordTag"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/nfc_contents"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+
 </RelativeLayout>
