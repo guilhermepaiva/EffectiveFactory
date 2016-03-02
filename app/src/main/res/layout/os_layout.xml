@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:columnCount="5"
+    android:rowCount="2">
+
+    <TextView android:id="@+id/idOS"
+        android:layout_width="wrap_content"
+        android:layout_gravity="fill_horizontal"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:text="ID"
+        android:textSize="21dp" />
+
+    <TextView android:id="@+id/idLote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:text="Lote: "
+        android:textSize="21dp" />
+
+    <TextView android:id="@+id/idProductOS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:text="Product: "
+        android:textSize="21dp" />
+
+    <TextView android:id="@+id/idAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:text="Quantidade: "
+        android:textSize="21dp" />
+
+    <TextView android:id="@+id/idCreatedOS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:text="Data: "
+        android:textSize="21dp" />
+</GridLayout>

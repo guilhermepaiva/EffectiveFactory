@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Effective Factory</string>
+    <string name="insert_factory">Cadastrar Fábrica</string>
+    <string name="action_settings">Configurações</string>
+    <string name="message_none_tag">Nenhuma operação sendo realizada. Por favor realize a leitura da Tag de indentificação do Operador</string>
+    <string name="message_none_employee_logged">Não há operadores logados. Por favor realize a leitura da tag de identificação do operador</string>
+</resources>
