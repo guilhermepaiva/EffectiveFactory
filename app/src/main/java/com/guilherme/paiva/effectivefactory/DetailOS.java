@@ -30,9 +30,9 @@ import java.io.UnsupportedEncodingException;
  */
 public class DetailOS extends Activity {
 
-    public static final String ERROR_DETECTED = "No NFC tag detected!";
-    public static final String WRITE_SUCCESS = "Text written to the NFC tag successfully!";
-    public static final String WRITE_ERROR = "Error during writing, is the NFC tag close enough to your device?";
+    public static final String ERROR_DETECTED = "Nenhuma tag NFC detectada!";
+    public static final String WRITE_SUCCESS = "Texto gravado na tag NFC com sucesso!";
+    public static final String WRITE_ERROR = "Erro durante a escrita, aproxime a tag do smartphone?";
     NfcAdapter nfcAdapter;
     PendingIntent pendingIntent;
     IntentFilter writeTagFilters[];
@@ -84,7 +84,7 @@ public class DetailOS extends Activity {
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         if (nfcAdapter == null) {
             // Stop here, we definitely need NFC
-            Toast.makeText(this, "This device doesn't support NFC.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Este smartphone nao suporta NFC.", Toast.LENGTH_LONG).show();
             finish();
         }
         readFromIntent(getIntent());
@@ -153,7 +153,7 @@ public class DetailOS extends Activity {
             Log.e("UnsupportedEncoding", e.toString());
         }
 
-        tvNFCContent.setText("NFC Content: " + text);
+        tvNFCContent.setText("Conteudo da tag NFC: " + text);
     }
 
 
