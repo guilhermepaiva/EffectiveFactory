@@ -59,6 +59,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ActivityListEmployee"></activity>
+        <activity android:name=".ActivityListSubproduct"></activity>
+        <activity android:name=".ActivityListProduct"></activity>
 
 
     </application>

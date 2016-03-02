@@ -31,7 +31,7 @@ public class ActivityInsertProduct extends Activity {
 
                 String result = crud.insertProduct(productNameString);
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(v.getContext(), DashboardRegister.class);
+                Intent intent = new Intent(v.getContext(), ActivityListProduct.class);
                 startActivity(intent);
             }
         });

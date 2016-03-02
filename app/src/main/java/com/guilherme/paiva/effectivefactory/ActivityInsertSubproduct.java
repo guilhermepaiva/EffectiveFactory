@@ -47,7 +47,7 @@ public class ActivityInsertSubproduct extends Activity {
                 String result = crud.insertSubproduct(spinnerChoiceProductString, editTextSubproductString);
 
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(v.getContext(), DashboardRegister.class);
+                Intent intent = new Intent(v.getContext(), ActivityListSubproduct.class);
                 startActivity(intent);
             }
         });

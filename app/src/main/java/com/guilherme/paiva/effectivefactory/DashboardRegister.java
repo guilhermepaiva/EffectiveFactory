@@ -48,7 +48,7 @@ public class DashboardRegister extends Activity {
         imageButtonRegisterProduct.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ActivityInsertProduct.class);
+                Intent intent = new Intent(v.getContext(), ActivityListProduct.class);
                 startActivity(intent);
 
             }
@@ -67,7 +67,7 @@ public class DashboardRegister extends Activity {
         imageButtonRegisterSubproduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ActivityInsertSubproduct.class);
+                Intent intent = new Intent(v.getContext(), ActivityListSubproduct.class);
                 startActivity(intent);
             }
         });
