@@ -34,6 +34,7 @@
         <activity android:name=".ActivityInsertOperativePost"></activity>
         <activity android:name=".ActivityInsertProduct"></activity>
         <activity android:name=".ActivityInsertOS"></activity>
+        <activity android:name=".ActivityInsertSubproduct"></activity>
         <activity android:name=".ActivityOS"></activity>
         <activity android:name=".ActivityProduction"></activity>
         <activity android:name=".ActivityTimeLine"></activity>

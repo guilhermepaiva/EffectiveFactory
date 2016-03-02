@@ -16,12 +16,14 @@ public class DashboardRegister extends Activity {
     ImageButton imageButtonRegisterOperativePost;
     ImageButton imageButtonRegisterProduct;
     ImageButton imageButtonRegisterPatternTime;
+    ImageButton imageButtonRegisterSubproduct;
+    ImageButton imageButtonRegisterOperation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dashboard_register);
-        
+
 
         imageButtonRegisterEmployee = (ImageButton) findViewById(R.id.imageButtonRegisterEmployee);
         imageButtonRegisterEmployee.setOnClickListener(new View.OnClickListener() {
@@ -48,6 +50,32 @@ public class DashboardRegister extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), ActivityInsertProduct.class);
                 startActivity(intent);
+
+            }
+        });
+
+        imageButtonRegisterPatternTime = (ImageButton) findViewById(R.id.imageButtonRegisterPatternTime);
+        imageButtonRegisterPatternTime.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        imageButtonRegisterSubproduct = (ImageButton) findViewById(R.id.imageButtonRegisterSubproduct);
+        imageButtonRegisterSubproduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), ActivityInsertSubproduct.class);
+                startActivity(intent);
+            }
+        });
+
+        imageButtonRegisterOperation = (ImageButton) findViewById(R.id.imageButtonRegisterOperation);
+        imageButtonRegisterOperation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
             }
         });
