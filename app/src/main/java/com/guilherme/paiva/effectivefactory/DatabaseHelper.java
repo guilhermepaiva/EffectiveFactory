@@ -52,9 +52,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String OPERATIVE_POST_NUMBER = "operative_post_number";
 
     //operative post table create statement
-    private static final String CREATE_TABLE_OPERATIVE_POST = "CREATE TABLE " + TABLE_OPERATIVE_POST
-            + "( " + ID_OPERATIVE_POST + " INTEGER PRIMARY KEY," + OPERATIVE_POST_NAME + " TEXT,"
-            + OPERATIVE_POST_NUMBER + " TEXT" + ")";
+    private static final String CREATE_TABLE_OPERATIVE_POST = "CREATE TABLE IF NOT EXISTS "
+            + TABLE_OPERATIVE_POST
+            + "( " + ID_OPERATIVE_POST + " INTEGER PRIMARY KEY,"
+            + OPERATIVE_POST_NAME + " TEXT," + OPERATIVE_POST_NUMBER + " TEXT" + ")";
 
     //PRODUCTS
     //column names for products

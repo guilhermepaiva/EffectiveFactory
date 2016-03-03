@@ -39,7 +39,7 @@ public class DashboardRegister extends Activity {
         imageButtonRegisterOperativePost.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ActivityInsertOperativePost.class);
+                Intent intent = new Intent(v.getContext(), ActivityListOperativePost.class);
                 startActivity(intent);
             }
         });

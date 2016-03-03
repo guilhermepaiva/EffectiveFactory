@@ -63,6 +63,7 @@
         <activity android:name=".ActivityListSubproduct"></activity>
         <activity android:name=".ActivityListProduct"></activity>
         <activity android:name=".ActivityListOperation"></activity>
+        <activity android:name=".ActivityListOperativePost"></activity>
 
 
     </application>

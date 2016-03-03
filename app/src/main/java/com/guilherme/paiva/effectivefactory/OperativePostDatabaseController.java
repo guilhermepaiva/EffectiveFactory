@@ -37,7 +37,7 @@ public class OperativePostDatabaseController {
 
     public Cursor loadOperativePosts(){
         Cursor cursor;
-        String[] fields = {databaseHelper.ID_OPERATIVE_POST, databaseHelper.OPERATIVE_POST_NAME};
+        String[] fields = {databaseHelper.ID_OPERATIVE_POST, databaseHelper.OPERATIVE_POST_NAME, databaseHelper.OPERATIVE_POST_NUMBER};
         db = databaseHelper.getReadableDatabase();
         cursor = db.query(databaseHelper.TABLE_OPERATIVE_POST, fields, null, null, null, null, null, null);
 
