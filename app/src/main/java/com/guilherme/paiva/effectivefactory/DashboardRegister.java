@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 /**
@@ -59,7 +60,8 @@ public class DashboardRegister extends Activity {
 
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(v.getContext(), ActivityListPatternTime.class);
+                startActivity(intent);
             }
         });
 
@@ -79,6 +81,15 @@ public class DashboardRegister extends Activity {
                 Intent intent = new Intent(v.getContext(), ActivityListOperation.class);
                 startActivity(intent);
 
+            }
+        });
+
+        Button buttonBackDashboardRegister = (Button) findViewById(R.id.buttonBackDashboardRegister);
+        buttonBackDashboardRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), DashboardFactory.class);
+                startActivity(intent);
             }
         });
     }

@@ -115,6 +115,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + COST_OPERATION + " TEXT, "
             + DESCRIPTION_OPERATION + " TEXT" + ")";
 
+    //PATTERN TIME
+    //column names for patter time
+    public static final String TABLE_PATTERN_TIME = "pattern_time";
+    public static final String ID_PATTERN_TIME = "_id";
+    public static final String OPERATION_PATTERN_TIME = "operation_pattern_time";
+    public static final String TIME_PATTERN_TIME = "time_pattern_time";
+
+    //pattern time table statement
+    private static final String CREATE_TABLE_PATTERN_TIME = "CREATE TABLE " + TABLE_PATTERN_TIME
+            + "( " + ID_PATTERN_TIME + " INTEGER PRIMARY KEY,"
+            + OPERATION_PATTERN_TIME + " TEXT, "
+            + TIME_PATTERN_TIME + " TEXT" + ")";
+
+
+
 
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DATABASE_VERSION);
@@ -129,6 +144,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_OS);
         db.execSQL(CREATE_TABLE_SUBPRODUCT);
         db.execSQL(CREATE_TABLE_OPERATION);
+        db.execSQL(CREATE_TABLE_PATTERN_TIME);
     }
 
     @Override
@@ -140,6 +156,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_OS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_SUBPRODUCT);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_OPERATION);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PATTERN_TIME);
         onCreate(db);
     }
 }

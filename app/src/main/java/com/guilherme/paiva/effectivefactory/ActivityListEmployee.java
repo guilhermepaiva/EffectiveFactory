@@ -47,5 +47,14 @@ public class ActivityListEmployee extends Activity {
             }
         });
 
+        Button buttonBackListEmployee = (Button) findViewById(R.id.buttonBackListEmployee);
+        buttonBackListEmployee.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), DashboardRegister.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }

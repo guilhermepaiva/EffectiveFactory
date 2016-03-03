@@ -36,6 +36,7 @@
         <activity android:name=".ActivityInsertOS"></activity>
         <activity android:name=".ActivityInsertSubproduct"></activity>
         <activity android:name=".ActivityInsertOperation"></activity>
+        <activity android:name=".ActivityInsertPatternTime"></activity>
         <activity android:name=".ActivityOS"></activity>
         <activity android:name=".ActivityProduction"></activity>
         <activity android:name=".ActivityTimeLine"></activity>
@@ -64,6 +65,7 @@
         <activity android:name=".ActivityListProduct"></activity>
         <activity android:name=".ActivityListOperation"></activity>
         <activity android:name=".ActivityListOperativePost"></activity>
+        <activity android:name=".ActivityListPatternTime"></activity>
 
 
     </application>

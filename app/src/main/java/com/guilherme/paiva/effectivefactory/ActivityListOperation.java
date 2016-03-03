@@ -45,5 +45,14 @@ public class ActivityListOperation extends Activity {
                 startActivity(intent);
             }
         });
+
+        Button buttonBackListOperation = (Button) findViewById(R.id.buttonBackListOperation);
+        buttonBackListOperation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), DashboardRegister.class);
+                startActivity(intent);
+            }
+        });
     }
 }

@@ -26,9 +26,19 @@
         android:layout_height="wrap_content"
         android:text="Cadastrar Novo Funcionário"
         android:id="@+id/buttonInsertEmployee"
+        android:layout_marginBottom="52dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="55dp" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Voltar"
+        android:id="@+id/buttonBackListEmployee"
+        android:layout_alignTop="@+id/buttonInsertEmployee"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 
 </RelativeLayout>

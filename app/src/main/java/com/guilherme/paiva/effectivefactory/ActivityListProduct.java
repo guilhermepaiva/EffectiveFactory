@@ -44,5 +44,14 @@ public class ActivityListProduct extends Activity {
             }
         });
 
+        Button buttonBackListProduct = (Button) findViewById(R.id.buttonBackListProduct);
+        buttonBackListProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), DashboardRegister.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
