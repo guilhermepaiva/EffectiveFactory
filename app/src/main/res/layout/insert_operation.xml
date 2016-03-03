@@ -38,9 +38,68 @@
         android:layout_height="wrap_content"
         android:text="Cadastrar Operação"
         android:id="@+id/buttonRegisterOperation"
-        android:layout_centerVertical="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/spinnerProductOperation"
+        android:layout_toEndOf="@+id/spinnerProductOperation" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Custo da Operação R$"
+        android:layout_below="@+id/editTextDescriptionOperation"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:textSize="23dp"
+        android:id="@+id/textView24" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/editTextCostOperation"
+        android:layout_below="@+id/textView24"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Escolha Produto e Subprotuo (opcional)"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textSize="23dp"
+        android:id="@+id/textView25" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerProductOperation"
+        android:layout_below="@+id/textView25"
+        android:layout_alignRight="@+id/textView24"
+        android:layout_alignEnd="@+id/textView24" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerSubproductOperation"
+        android:layout_alignBottom="@+id/spinnerProductOperation"
+        android:layout_toRightOf="@+id/spinnerProductOperation"
+        android:layout_toEndOf="@+id/spinnerProductOperation" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Voltar"
+        android:id="@+id/buttonBackInsertOperation"
+        android:layout_alignBottom="@+id/buttonRegisterOperation"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>

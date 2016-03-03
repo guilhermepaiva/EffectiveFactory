@@ -103,10 +103,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String TABLE_OPERATION = "operation";
     public static final String ID_OPERATION = "_id";
     public static final String DESCRIPTION_OPERATION = "description_operation";
+    public static final String PRODUCT_OPERATION = "product_operation";
+    public static final String SUBPRODUCT_OPERATION = "subproduct_operation";
+    public static final String COST_OPERATION = "cost_operation";
 
     //operation table statement
     private static final String CREATE_TABLE_OPERATION = "CREATE TABLE " + TABLE_OPERATION
             + "( " + ID_OPERATION + " INTEGER PRIMARY KEY,"
+            + PRODUCT_OPERATION + " TEXT, "
+            + SUBPRODUCT_OPERATION + " TEXT, "
+            + COST_OPERATION + " TEXT, "
             + DESCRIPTION_OPERATION + " TEXT" + ")";
 
 

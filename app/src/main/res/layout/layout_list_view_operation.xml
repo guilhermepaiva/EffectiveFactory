@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:columnCount="2"
+    android:columnCount="4"
     android:rowCount="3">
 
     <TextView android:id="@+id/idDescriptionOperation"
@@ -10,6 +10,34 @@
         android:layout_marginLeft="5dp"
         android:layout_marginTop="15dp"
         android:text="Operação: "
+        android:layout_width="wrap_content"
+        android:visibility="visible" />
+
+    <TextView android:id="@+id/idProductOperation"
+        android:layout_gravity="fill_horizontal"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="15dp"
+        android:text="Produto: "
+        android:layout_width="wrap_content"
+        android:visibility="visible" />
+
+
+    <TextView android:id="@+id/idSubproductOperation"
+        android:layout_gravity="fill_horizontal"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="15dp"
+        android:text="Subproduto: "
+        android:layout_width="wrap_content"
+        android:visibility="visible" />
+
+    <TextView android:id="@+id/idCostOperation"
+        android:layout_gravity="fill_horizontal"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="15dp"
+        android:text="Custo: "
         android:layout_width="wrap_content"
         android:visibility="visible" />
 

@@ -26,6 +26,7 @@ public class ActivityInsertSubproduct extends Activity {
 
         final Spinner spinnerChoiceProduct = (Spinner) findViewById(R.id.spinnerChoiceProduct);
         Button buttonRegisterSubproduct = (Button) findViewById(R.id.buttonRegisterSubproduct);
+        Button buttonBackSubproductDashBoard = (Button) findViewById(R.id.buttonBackSubproductDashBoard);
 
         ArrayList<String> arrayListProducts = new ArrayList<String>();
         arrayListProducts = arrayListOfProductsFromDB();
@@ -48,6 +49,14 @@ public class ActivityInsertSubproduct extends Activity {
 
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(v.getContext(), ActivityListSubproduct.class);
+                startActivity(intent);
+            }
+        });
+
+        buttonBackSubproductDashBoard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), DashboardRegister.class);
                 startActivity(intent);
             }
         });

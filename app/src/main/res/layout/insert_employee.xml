@@ -75,7 +75,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/editTextSupervisorName"
-        android:layout_alignEnd="@+id/editTextSupervisorName" />
+        android:layout_alignEnd="@+id/editTextSupervisorName"
+        android:inputType="number" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -96,7 +97,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/editTextCell"
-        android:layout_alignEnd="@+id/editTextCell" />
+        android:layout_alignEnd="@+id/editTextCell"
+        android:inputType="number" />
 
     <Button
         android:layout_width="wrap_content"

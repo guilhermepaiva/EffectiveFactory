@@ -27,8 +27,10 @@ public class ActivityListOperation extends Activity {
         if (cursor.getCount() == 0){
             Toast.makeText(getApplicationContext(), "Nenhuma operação cadastrada ainda...", Toast.LENGTH_LONG).show();
         }
-        String[] fieldNames = new String[] {DatabaseHelper.DESCRIPTION_OPERATION};
-        int[] idViews = new int[] {R.id.idDescriptionOperation};
+        String[] fieldNames = new String[] {DatabaseHelper.DESCRIPTION_OPERATION, DatabaseHelper.PRODUCT_OPERATION,
+        DatabaseHelper.SUBPRODUCT_OPERATION, DatabaseHelper.COST_OPERATION};
+        int[] idViews = new int[] {R.id.idDescriptionOperation, R.id.idProductOperation, R.id.idSubproductOperation,
+        R.id.idCostOperation};
 
         SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(getBaseContext(),
                 R.layout.layout_list_view_operation, cursor, fieldNames, idViews, 0);
