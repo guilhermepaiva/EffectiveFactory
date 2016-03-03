@@ -15,7 +15,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editTextLoteOS"
-        android:layout_below="@+id/textView20"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="57dp"
@@ -26,27 +25,16 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editTextProductOS"
-        android:layout_below="@+id/editTextLoteOS"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="52dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:hint="digite o produto" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
         android:id="@+id/editTextAmountProduct"
-        android:layout_centerVertical="true"
+        android:hint="digite a quantidade"
+        android:layout_below="@+id/editTextLoteOS"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_marginTop="181dp"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:hint="digite a quantidade" />
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -59,5 +47,14 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerProductOS"
+        android:layout_below="@+id/editTextLoteOS"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="63dp" />
 
 </RelativeLayout>
