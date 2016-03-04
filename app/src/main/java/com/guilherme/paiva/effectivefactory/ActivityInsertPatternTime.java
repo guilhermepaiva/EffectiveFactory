@@ -23,6 +23,28 @@ public class ActivityInsertPatternTime extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.insert_pattern_time);
 
+
+        //spinner de product
+        final Spinner spinnerProductPatternTime = (Spinner) findViewById(R.id.spinnerProductPatternTime);
+
+        ArrayList<String> arrayListProducts = new ArrayList<String>();
+        arrayListProducts = arrayListOfProductsFromDB();
+
+        ArrayAdapter<String> arrayAdapterProducts = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, arrayListProducts);
+        spinnerProductPatternTime.setAdapter(arrayAdapterProducts);
+
+        //spinner de subproduct
+        final Spinner spinnerSubproductPatternTime = (Spinner) findViewById(R.id.spinnerSubproductPatternTime);
+
+        ArrayList<String> arrayListSubproducts = new ArrayList<String>();
+        arrayListSubproducts = arrayListOfSubproductsFromDB();
+
+        ArrayAdapter<String> arrayAdapterSubproducts = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, arrayListSubproducts);
+        spinnerSubproductPatternTime.setAdapter(arrayAdapterSubproducts);
+
+        //spinner de operation description
         final Spinner spinnerOperationPatternTime = (Spinner) findViewById(R.id.spinnerOperationPatternTime);
 
         ArrayList<String> arrayListOperations = new ArrayList<String>();
@@ -73,13 +95,50 @@ public class ActivityInsertPatternTime extends Activity {
         cursor.moveToFirst();
         ArrayList<String> operations = new ArrayList<String>();
         while(!cursor.isAfterLast()){
-            operations.add(cursor.getString(cursor.getColumnIndex(DatabaseHelper.OPERATION_PATTERN_TIME)));
-            operations.add(cursor.getString(cursor.getColumnIndex(DatabaseHelper.TIME_PATTERN_TIME)));
+            operations.add(cursor.getString(cursor.getColumnIndex(DatabaseHelper.DESCRIPTION_OPERATION)));
             cursor.moveToNext();
         }
         cursor.close();
 
         return operations;
+
+    }
+
+    private ArrayList<String> arrayListOfProductsFromDB(){
+        OperationDatabaseController crud = new OperationDatabaseController(getApplicationContext());
+        final Cursor cursor = crud.loadOperations();
+        if (cursor.getCount() == 0){
+            Toast.makeText(getApplicationContext(), "Nenhuma operação cadastrada ainda...", Toast.LENGTH_LONG).show();
+        }
+
+        cursor.moveToFirst();
+        ArrayList<String> products = new ArrayList<String>();
+        while(!cursor.isAfterLast()){
+            products.add(cursor.getString(cursor.getColumnIndex(DatabaseHelper.PRODUCT_OPERATION)));
+            cursor.moveToNext();
+        }
+        cursor.close();
+
+        return products;
+
+    }
+
+    private ArrayList<String> arrayListOfSubproductsFromDB(){
+        OperationDatabaseController crud = new OperationDatabaseController(getApplicationContext());
+        final Cursor cursor = crud.loadOperations();
+        if (cursor.getCount() == 0){
+            Toast.makeText(getApplicationContext(), "Nenhuma operação cadastrada ainda...", Toast.LENGTH_LONG).show();
+        }
+
+        cursor.moveToFirst();
+        ArrayList<String> subproducts = new ArrayList<String>();
+        while(!cursor.isAfterLast()){
+            subproducts.add(cursor.getString(cursor.getColumnIndex(DatabaseHelper.SUBPRODUCT_OPERATION)));
+            cursor.moveToNext();
+        }
+        cursor.close();
+
+        return subproducts;
 
     }
 }

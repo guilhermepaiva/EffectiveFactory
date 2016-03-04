@@ -37,7 +37,8 @@ public class PatternTimeDatabaseController {
 
     public Cursor loadPatternTimes(){
         Cursor cursor;
-        String[] fields = {databaseHelper.ID_PATTERN_TIME, databaseHelper.OPERATION_PATTERN_TIME, databaseHelper.TIME_PATTERN_TIME};
+        String[] fields = {databaseHelper.ID_PATTERN_TIME, databaseHelper.PRODUCT_PATTERN_TIME, databaseHelper.SUBPRODUCT_PATTERN_TIME,
+        databaseHelper.OPERATION_PATTERN_TIME, databaseHelper.TIME_PATTERN_TIME};
         db = databaseHelper.getReadableDatabase();
         cursor = db.query(databaseHelper.TABLE_PATTERN_TIME, fields, null, null, null, null, null, null);
 

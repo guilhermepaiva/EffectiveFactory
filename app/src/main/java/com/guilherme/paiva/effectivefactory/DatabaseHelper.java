@@ -119,6 +119,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //column names for patter time
     public static final String TABLE_PATTERN_TIME = "pattern_time";
     public static final String ID_PATTERN_TIME = "_id";
+    public static final String PRODUCT_PATTERN_TIME = "product_pattern_time";
+    public static final String SUBPRODUCT_PATTERN_TIME = "subproduct_pattern_time";
     public static final String OPERATION_PATTERN_TIME = "operation_pattern_time";
     public static final String TIME_PATTERN_TIME = "time_pattern_time";
 
@@ -126,6 +128,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_PATTERN_TIME = "CREATE TABLE " + TABLE_PATTERN_TIME
             + "( " + ID_PATTERN_TIME + " INTEGER PRIMARY KEY,"
             + OPERATION_PATTERN_TIME + " TEXT, "
+            + PRODUCT_PATTERN_TIME + " TEXT, "
+            + SUBPRODUCT_PATTERN_TIME + " TEXT, "
             + TIME_PATTERN_TIME + " TEXT" + ")";
 
 

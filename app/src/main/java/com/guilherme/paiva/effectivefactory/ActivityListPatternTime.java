@@ -29,8 +29,9 @@ public class ActivityListPatternTime extends Activity {
             Toast.makeText(getApplicationContext(), "Nenhum tempo padrão cadastrado ainda...", Toast.LENGTH_LONG).show();
         }
 
-        String[] fieldNames = new String[] {DatabaseHelper.OPERATION_PATTERN_TIME, DatabaseHelper.TIME_PATTERN_TIME};
-        int[] idViews = new int[] {R.id.idOperationPatternTime, R.id.idTimePatternTime};
+        String[] fieldNames = new String[] {DatabaseHelper.PRODUCT_PATTERN_TIME, DatabaseHelper.SUBPRODUCT_PATTERN_TIME, DatabaseHelper.OPERATION_PATTERN_TIME, DatabaseHelper.TIME_PATTERN_TIME};
+        int[] idViews = new int[] {R.id.idProductPatternTime,
+                R.id.idSubroductPatternTime, R.id.idOperationPatternTime, R.id.idTimePatternTime};
 
         SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(getBaseContext(),
                 R.layout.layout_list_view_pattern_time, cursor, fieldNames, idViews, 0);

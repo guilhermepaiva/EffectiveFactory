@@ -69,5 +69,14 @@ public class ActivityOS extends Activity {
                 startActivity(intent);
             }
         });
+
+        Button buttonBackFromOS = (Button) findViewById(R.id.buttonBackFromOS);
+        buttonBackFromOS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), DashboardFactory.class);
+                startActivity(intent);
+            }
+        });
     }
 }

@@ -28,9 +28,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/spinnerChoiceProduct"
         android:layout_below="@+id/textView23"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:spinnerMode="dialog" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <EditText
         android:layout_width="wrap_content"

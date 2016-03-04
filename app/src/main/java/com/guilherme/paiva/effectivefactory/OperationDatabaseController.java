@@ -40,7 +40,7 @@ public class OperationDatabaseController {
 
     public Cursor loadOperations(){
         Cursor cursor;
-        String[] fields = {databaseHelper.ID_OPERATION, databaseHelper.DESCRIPTION_OPERATION, DatabaseHelper.PRODUCT_OPERATION, DatabaseHelper.SUBPRODUCT_OPERATION, DatabaseHelper.COST_OPERATION};
+        String[] fields = {databaseHelper.ID_OPERATION, databaseHelper.DESCRIPTION_OPERATION, databaseHelper.PRODUCT_OPERATION, databaseHelper.SUBPRODUCT_OPERATION, databaseHelper.COST_OPERATION};
         db = databaseHelper.getReadableDatabase();
         cursor = db.query(databaseHelper.TABLE_OPERATION, fields, null, null, null, null, null, null);
 
@@ -51,4 +51,62 @@ public class OperationDatabaseController {
         return cursor;
 
     }
+
+    public Cursor loadDescriptionOperations(){
+        Cursor cursor;
+        String[] fields = {databaseHelper.ID_OPERATION, databaseHelper.DESCRIPTION_OPERATION};
+        db = databaseHelper.getReadableDatabase();
+        cursor = db.query(databaseHelper.TABLE_OPERATION, fields, null, null, null, null, null, null);
+
+        if (cursor != null){
+            cursor.moveToFirst();
+        }
+        db.close();
+        return cursor;
+
+    }
+
+    public Cursor loadProductOperations(){
+        Cursor cursor;
+        String[] fields = {databaseHelper.ID_OPERATION, databaseHelper.PRODUCT_OPERATION};
+        db = databaseHelper.getReadableDatabase();
+        cursor = db.query(databaseHelper.TABLE_OPERATION, fields, null, null, null, null, null, null);
+
+        if (cursor != null){
+            cursor.moveToFirst();
+        }
+        db.close();
+        return cursor;
+
+    }
+
+    public Cursor loadSubroductOperations(){
+        Cursor cursor;
+        String[] fields = {databaseHelper.ID_OPERATION, databaseHelper.SUBPRODUCT_OPERATION};
+        db = databaseHelper.getReadableDatabase();
+        cursor = db.query(databaseHelper.TABLE_OPERATION, fields, null, null, null, null, null, null);
+
+        if (cursor != null){
+            cursor.moveToFirst();
+        }
+        db.close();
+        return cursor;
+
+    }
+
+    public Cursor loadCostOperations(){
+        Cursor cursor;
+        String[] fields = {databaseHelper.ID_OPERATION, databaseHelper.COST_OPERATION};
+        db = databaseHelper.getReadableDatabase();
+        cursor = db.query(databaseHelper.TABLE_OPERATION, fields, null, null, null, null, null, null);
+
+        if (cursor != null){
+            cursor.moveToFirst();
+        }
+        db.close();
+        return cursor;
+
+    }
+
+
 }

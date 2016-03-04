@@ -137,10 +137,9 @@
         android:layout_width="183dp"
         android:layout_height="wrap_content"
         android:id="@+id/spinnerTLEmployee"
-        android:layout_above="@+id/imageButton"
+        android:layout_above="@+id/buttonAddProduction"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="89dp" />
+        android:layout_alignParentStart="true" />
 
     <Spinner
         android:layout_width="wrap_content"
@@ -155,8 +154,36 @@
         android:layout_height="wrap_content"
         android:text="Adicionar"
         android:id="@+id/buttonAddProduction"
-        android:layout_below="@+id/spinnerOperations"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignTop="@+id/imageButton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Escolha o Funcionário"
+        android:layout_above="@+id/spinnerTLEmployee"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textSize="19dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Escolha a Operação"
+        android:layout_above="@+id/spinnerOperations"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textSize="19dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Voltar"
+        android:id="@+id/buttonBackFromProduction"
+        android:layout_below="@+id/spinnerTLEmployee"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
 
