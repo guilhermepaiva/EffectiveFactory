@@ -41,6 +41,8 @@
         <activity android:name=".ActivityProduction"></activity>
         <activity android:name=".ActivityTimeLine"></activity>
         <activity android:name=".ActivityIndicators"></activity>
+        <activity android:name=".ActivityIndicatorOperator"></activity>
+        <activity android:name=".ActivityIndicatorProduction"></activity>
         <activity android:name=".DetailOS">
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
