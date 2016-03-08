@@ -41,6 +41,8 @@ public class ActivityLogin extends Activity {
     NfcAdapter nfcAdapter;
     PendingIntent pendingIntent;
     Context context;
+    String contentTagEmployee;
+    String contentTagOperativePost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,12 +108,7 @@ public class ActivityLogin extends Activity {
             Log.e("UnsupportedEncoding", e.toString());
         }
 
-
-        if (verifyTagOperativePost(text)){
-            Toast.makeText(ActivityLogin.this, "Leu tag de Posto Operativo", Toast.LENGTH_LONG).show();
-        } else {
-            Toast.makeText(ActivityLogin.this, "Leu tag de Funcionario", Toast.LENGTH_LONG).show();
-        }
+        handleReadingTags(text);
 
         //Toast.makeText(ActivityLogin.this, "Conteudo da tag NFC: " + text, Toast.LENGTH_SHORT).show();
     }
@@ -131,6 +128,16 @@ public class ActivityLogin extends Activity {
         }
         else{
             return false;
+        }
+    }
+
+    private void handleReadingTags(String textReceived){
+        if (verifyTagOperativePost(textReceived)){
+            Toast.makeText(ActivityLogin.this, "Posto Operativo lido: " + textReceived, Toast.LENGTH_LONG).show();
+            contentTagOperativePost = textReceived;
+        } else {
+            Toast.makeText(ActivityLogin.this, "Funcionario lido: " + textReceived, Toast.LENGTH_LONG).show();
+            contentTagEmployee = textReceived;
         }
     }
 
