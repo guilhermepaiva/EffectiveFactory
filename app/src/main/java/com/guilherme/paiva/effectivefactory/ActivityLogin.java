@@ -12,20 +12,20 @@ import android.nfc.Tag;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
-import android.widget.ArrayAdapter;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 
 /**
  * Created by guilhermepaiva on 18/02/16.
  */
 public class ActivityLogin extends Activity {
     private ListView listView;
+    private Button buttonBackLogin;
     private Tag myTag;
     private NfcAdapter nfcAdapter;
     private PendingIntent pendingIntent;
@@ -54,6 +54,17 @@ public class ActivityLogin extends Activity {
         pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
         IntentFilter tagDetected = new IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED);
         tagDetected.addCategory(Intent.CATEGORY_DEFAULT);
+
+        buttonBackLogin = (Button) findViewById(R.id.buttonBackLogin);
+        buttonBackLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), DashboardFactory.class);
+                startActivity(intent);
+            }
+        });
+
+        showListViewLogged();
 
     }
 
