@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.Cursor;
 import android.nfc.NdefMessage;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
@@ -13,6 +14,7 @@ import android.os.Parcelable;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,41 +25,25 @@ import java.util.ArrayList;
  * Created by guilhermepaiva on 18/02/16.
  */
 public class ActivityLogin extends Activity {
-
-    private ArrayList<String> messagesReceivedArray = new ArrayList<>();
-    private TextView textViewReceivedMessages;
-    private TextView textViewMessageNoneEmployeeLogged;
-    private String employeeReadTag, ptoReadTag, lteReadTag;
     private ListView listView;
-    private ArrayList<String> valuesAdapter = new ArrayList<>();
-    private ArrayAdapter<String> arrayAdapter;
-    private boolean employeeReaded = false;
-    private boolean ptoReaded = false;
-    private StringBuffer employeeToBeInserted = new StringBuffer();
-    private StringBuffer ptoToBeInserted = new StringBuffer();
-    private String toBeInserted;
-
-    Tag myTag;
-    NfcAdapter nfcAdapter;
-    PendingIntent pendingIntent;
-    Context context;
-    String contentTagEmployee;
-    String contentTagOperativePost;
+    private Tag myTag;
+    private NfcAdapter nfcAdapter;
+    private PendingIntent pendingIntent;
+    private Context context;
+    private String contentTagEmployee;
+    private String contentTagOperativePost;
+    private boolean tagEmployeeReaded = false;
+    private boolean tagOperativePostReaded = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_login);
 
-        textViewReceivedMessages = (TextView) findViewById(R.id.textViewReceivedMessages);
-        textViewMessageNoneEmployeeLogged = (TextView) findViewById(R.id.messageNoneEmployeeLogged);
         listView = (ListView) findViewById(R.id.listViewLogin);
-
-        //updateTextViews();
-
         context = this;
-
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
+
         if (nfcAdapter == null) {
             // Stop here, we definitely need NFC
             Toast.makeText(this, "Este smartphone nao suporta NFC.", Toast.LENGTH_LONG).show();
@@ -110,6 +96,8 @@ public class ActivityLogin extends Activity {
 
         handleReadingTags(text);
 
+        showListViewLogged();
+
         //Toast.makeText(ActivityLogin.this, "Conteudo da tag NFC: " + text, Toast.LENGTH_SHORT).show();
     }
 
@@ -135,96 +123,40 @@ public class ActivityLogin extends Activity {
         if (verifyTagOperativePost(textReceived)){
             Toast.makeText(ActivityLogin.this, "Posto Operativo lido: " + textReceived, Toast.LENGTH_LONG).show();
             contentTagOperativePost = textReceived;
+            tagOperativePostReaded = true;
         } else {
             Toast.makeText(ActivityLogin.this, "Funcionario lido: " + textReceived, Toast.LENGTH_LONG).show();
             contentTagEmployee = textReceived;
+            tagEmployeeReaded = true;
+        }
+
+        if (tagEmployeeReaded & tagOperativePostReaded){
+            recordLogin(contentTagEmployee, contentTagOperativePost);
         }
     }
 
-    /*private  void updateTextViews() {
+    private void recordLogin(String employeeName, String operativePost){
+        LoginDatabaseController crud = new LoginDatabaseController(getBaseContext());
+        String result = crud.insertLogin(employeeName, operativePost);
+        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
+        tagOperativePostReaded = false;
+        tagEmployeeReaded = false;
 
+    }
 
-
-        //Populate our list of messages we have received
-        if (messagesReceivedArray.size() > 0) {
-            String typeTag = messagesReceivedArray.get(0).substring(0,6);
-            typeTag = typeTag.trim();
-
-            if (typeTag.equalsIgnoreCase("enpto")){
-                ptoReadTag = messagesReceivedArray.get(0).substring(6);
-                textViewReceivedMessages.setText("Posto Operativo: " + messagesReceivedArray.get(0).substring(6) + " lido com sucesso!");
-
-                ptoToBeInserted.append(ptoReadTag);
-                toBeInserted = ptoToBeInserted.toString() + employeeToBeInserted.toString();
-                ptoReaded = true;
-            } else if (typeTag.equalsIgnoreCase("enlte")){
-                textViewReceivedMessages.setText("Lote: " + messagesReceivedArray.get(0).substring(6) + " lido...\n\nVocê deve ler uma Tag de Posto Operativo...");
-            } else {
-                textViewReceivedMessages.setText("Operador: " + messagesReceivedArray.get(0).substring(3) + "\n\nPor favor, realize a leitura da Tag de indentificação do" +
-                        " Posto de Trabalho!");
-                employeeToBeInserted.append("Operador " + messagesReceivedArray.get(0).substring(3) + " logado no ");
-                employeeReaded = true;
-            }
-
-            if (employeeReaded){
-
-                if (ptoReaded){
-                    valuesAdapter.add(toBeInserted.toString());
-                    ptoReaded = false;
-                    employeeReaded = false;
-                    employeeToBeInserted.delete(0, employeeToBeInserted.length());
-                    ptoToBeInserted.delete(0, ptoToBeInserted.length());
-                    toBeInserted = "";
-                }
-            }
-
-
-        } else {
-            textViewReceivedMessages.setText("Aproxime o smartphone junto com a Tag do funcionário...");
+    private void showListViewLogged(){
+        LoginDatabaseController crud = new LoginDatabaseController(getBaseContext());
+        final Cursor cursor = crud.loadLoggedIn();
+        if (cursor.getCount() == 0){
+            Toast.makeText(getApplicationContext(), "Nenhuma funcionario logado ainda...", Toast.LENGTH_LONG).show();
         }
+        String[] fieldNames = new String[] {DatabaseHelper.EMPLOYEE_LOGIN, DatabaseHelper.OPERATIVE_POST_LOGIN};
+        int[] idViews = new int[] {R.id.idEmployeeLogin, R.id.idOperativePostLogin};
 
-        arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, valuesAdapter);
-        listView.setAdapter(arrayAdapter);
+        SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(getBaseContext(),
+                R.layout.layout_list_view_login, cursor, fieldNames, idViews, 0);
+        listView = (ListView) findViewById(R.id.listViewLogin);
+        listView.setAdapter(simpleCursorAdapter);
+
     }
-
-    private void handleNfcIntent(Intent NfcIntent) {
-        if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(NfcIntent.getAction())) {
-            Parcelable[] receivedArray =
-                    NfcIntent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
-
-            if(receivedArray != null) {
-                messagesReceivedArray.clear();
-                NdefMessage receivedMessage = (NdefMessage) receivedArray[0];
-                NdefRecord[] attachedRecords = receivedMessage.getRecords();
-
-                for (NdefRecord record:attachedRecords) {
-                    String string = new String(record.getPayload());
-                    //Make sure we don't pass along our AAR (Android Application Record)
-                    if (string.equals(getPackageName())) {
-                        continue; }
-                    messagesReceivedArray.add(string);
-                }
-                Toast.makeText(this, "TAG: " + messagesReceivedArray +
-                        " lida", Toast.LENGTH_LONG).show();
-                updateTextViews();
-            }
-            else {
-                Toast.makeText(this, "Received Blank Parcel", Toast.LENGTH_LONG).show();
-            }
-        }
-    }
-
-    @Override
-    public void onNewIntent(Intent intent) {
-        handleNfcIntent(intent);
-    }
-
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        updateTextViews();
-        handleNfcIntent(getIntent());
-    }*/
-
 }

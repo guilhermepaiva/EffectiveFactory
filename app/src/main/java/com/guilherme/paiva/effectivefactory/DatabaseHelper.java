@@ -132,6 +132,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + SUBPRODUCT_PATTERN_TIME + " TEXT, "
             + TIME_PATTERN_TIME + " TEXT" + ")";
 
+    //LOGIN
+    //column names for login
+    public static final String TABLE_LOGIN = "login";
+    public static final String ID_LOGIN = "_id";
+    public static final String EMPLOYEE_LOGIN = "employee_login";
+    public static final String OPERATIVE_POST_LOGIN = "operative_post_login";
+    public static final String DATE_LOGGED = "date_logged";
+
+    //login table statement
+    private static final String CREATE_TABLE_LOGIN = "CREATE TABLE " + TABLE_LOGIN
+            + "( " + ID_LOGIN + " INTEGER PRIMARY KEY,"
+            + EMPLOYEE_LOGIN + " TEXT, "
+            + OPERATIVE_POST_LOGIN + " TEXT, "
+            + DATE_LOGGED + " DATE DEFAULT CURRENT_DATE" + ")";
+
 
 
 
@@ -149,6 +164,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_SUBPRODUCT);
         db.execSQL(CREATE_TABLE_OPERATION);
         db.execSQL(CREATE_TABLE_PATTERN_TIME);
+        db.execSQL(CREATE_TABLE_LOGIN);
     }
 
     @Override
@@ -161,6 +177,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_SUBPRODUCT);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_OPERATION);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PATTERN_TIME);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_LOGIN);
         onCreate(db);
     }
 }
